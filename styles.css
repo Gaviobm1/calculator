@@ -1,0 +1,93 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+    flex: 1 1 auto;
+    padding: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.screen {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 2px solid black;
+    padding: 10px;
+    font-size: x-large;
+    height: 50px;
+}
+.numBut {
+  display: flex;
+  
+}
+
+
+.btns {
+    display: flex;   
+}
+
+.funcs {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    gap: .5em;
+    padding: 5px;
+    width: 60px;
+    height: 360px;
+}
+
+.oper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 100%;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+}
+.nums {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    padding: 5px;
+    width: 220px;
+    height: 360px;
+    
+}
+
+.numBut {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 100%;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    
+}
+
+.numBut0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    width: 120px;
+    height: 60px;
+}
