@@ -6,25 +6,30 @@ body {
     box-sizing: content-box;
     flex: 1 1 auto;
     padding: 50px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 2px solid black;
-    padding: 10px;
+    border-radius: 10%;
+    padding: 20px;
+    background-color: #D896FF;
+    filter: brightness(150%)
 }
 
 .screen {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border: 2px solid black;
     padding: 10px;
     font-size: x-large;
     height: 50px;
+    background-color: #efbbff;
+    filter: brightness(200%);
+    border-radius: 10%;
+    margin: 20px;
 }
 .numBut {
   display: flex;
@@ -39,27 +44,61 @@ body {
 .funcs {
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid black;
     gap: .5em;
     padding: 5px;
     width: 60px;
     height: 360px;
+    border-radius: 10%;
 }
 
 .oper {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
     border-radius: 100%;
+    border-style: none;
     padding: 5px;
     width: 60px;
     height: 60px;
+    background-color: #702670;
+    color: beige;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+.equal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border-style: none;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: #702670;
+    color: beige;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.butoClear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border-style: none;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: #702670;
+    color: beige;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .nums {
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid black;
     justify-content: center;
     align-items: center;
     gap: .5em;
@@ -67,27 +106,38 @@ body {
     width: 220px;
     height: 360px;
     
+    
 }
 
 .numBut {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
     border-radius: 100%;
+    border-style: none;
     padding: 10px;
     width: 60px;
     height: 60px;
+    background-color: #201934;
+    color: beige;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     
 }
 
-.numBut0 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 50%;
-    padding: 5px;
-    width: 120px;
-    height: 60px;
+.top {
+    background-color: #66023C
 }
+
+.num0 {
+    width: 120px;
+   
+}
+
+.clear {
+    background-color: #001eff;
+    color: beige
+}
+
+
+

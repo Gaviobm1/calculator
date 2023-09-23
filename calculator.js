@@ -8,6 +8,21 @@ buttons.classList.add('btns')
 const numbers = document.createElement('div')
 numbers.classList.add('nums')
 
+const butoClear = document.createElement('button')
+butoClear.classList.add('butoClear', 'top')
+butoClear.textContent = 'C'
+numbers.appendChild(butoClear)
+
+const percent = document.createElement('button');
+percent.classList.add('oper', 'percent', 'buto', 'top');
+percent.textContent = ' % ';
+numbers.appendChild(percent);
+
+const negPosi = document.createElement('button');
+negPosi.classList.add('oper', 'negPosi', 'top');
+negPosi.textContent = '- / +'
+numbers.appendChild(negPosi)
+
 const butoNum1 = document.createElement('button')
 butoNum1.classList.add('numBut', 'num1', 'buto')
 butoNum1.textContent = '1';
@@ -63,36 +78,34 @@ butoNumPoint.classList.add('numBut', 'numPoint', 'buto')
 butoNumPoint.textContent = '.';
 numbers.appendChild(butoNumPoint)
 
-const butoClear = document.createElement('button')
-butoClear.classList.add('numBut', 'butoClear')
-butoClear.textContent = 'C'
-numbers.appendChild(butoClear)
+
 
 const functions = document.createElement('div')
 functions.classList.add('funcs')
 
 const add = document.createElement('button')
-add.classList.add('oper', 'add', 'buto')
+add.classList.add('oper', 'add')
 add.textContent = ' + ';
 functions.appendChild(add);
 
 const subtr = document.createElement('button')
-subtr.classList.add('oper', 'minus', 'buto')
+subtr.classList.add('oper', 'minus')
 subtr.textContent = ' - ';
 functions.appendChild(subtr);
 
 const multi = document.createElement('button')
-multi.classList.add('oper', 'multiply', 'buto')
+multi.classList.add('oper', 'multiply')
 multi.textContent = ' x ';
 functions.appendChild(multi);
 
 const divy = document.createElement('button')
-divy.classList.add('oper', 'divide', 'buto')
+divy.classList.add('oper', 'divide')
 divy.textContent = ' ÷ ';
 functions.appendChild(divy);
 
+
 const equals = document.createElement('button')
-equals.classList.add('oper', 'equal')
+equals.classList.add('equal')
 equals.textContent = ' = ';
 functions.appendChild(equals);
 
@@ -103,38 +116,55 @@ buttons.appendChild(numbers);
 buttons.appendChild(functions);
 
 const clear = document.querySelector('.butoClear').addEventListener('click', () => {
-    screen.textContent = ''
+    screen.textContent = '';
+    displayValue = [];
 })
 
-const displayValue = [];
+let displayValue = [];
 const className = document.querySelectorAll('.buto').forEach((button) => button.addEventListener('click', () => {
+   
     screen.textContent += button.textContent;
-    displayValue.splice(0, 1, screen.textContent)
+}
+)) 
+    
+    /*
+    if a button containing an operator is clicked, it doesn't appear on screen but pushes the current number to the displayValue array and also pushes itself to the array. upon the next click the old number is replaced with the new 
+    */
+    
+
+
+const screenContent = document.querySelectorAll('.oper').forEach((button) => button.addEventListener('click', () => {
+    button.style.opacity = '0.5'
+    displayValue.push(screen.textContent);
+    displayValue.push(button.textContent);
+    screen.textContent = '';
+
 }))
 
 let str1 = ''
 const getResult = document.querySelector('.equal').addEventListener('click', () => {
-   str1=  displayValue.toString();
-   arr1= str1.split(' ');
-   num1 = arr1[0];
-   num2 = arr1[2];
-   operator = arr1 [1];
+   
+   displayValue.push(screen.textContent);
+   let arr1 = displayValue
+   num1 = displayValue[0];
+   
+   num2 = displayValue[2];
+  
+   operator = displayValue[1];
+   
    screen.textContent = operate(num1, num2, operator);
+   
+   
 })
 
 
-   
+const negyPosy = document.querySelector('.negPosi').addEventListener('click', () => {
+     screen.textContent = screen.textContent.replace(/^/,'-')
+})
 
-
- 
- 
-
-
-
-
-   let num1;
-   let num2; 
-   let operator;
+let num1;
+let num2; 
+let operator;
    
 
 function addUp (a, b) {
@@ -146,18 +176,33 @@ function subtract (a, b) {
 }
 
 function multiply (a, b) {
-    return a*=b;
+    return (a*=b);
 }
 
 function divide (a, b) {
-    if (b = 0) {
-      return  screen.textContent == 'DON\'T BE A SMARTASS!';
+    if (b === '0') {
+      return  screen.textContent = "Try again stupid.";
     }
-    return (a/=b).toFixed(2);
-
+    else {return (a/=b).toFixed(2).replace(/[.,]00$/, "");
+}
 }
 
-
+function percentage(a, b) {
+    return (a/b*100).toFixed(2).replace(/[.,]00$/, "");
+}
+/*
+function negPos (a) {
+    if (a > 0) {
+     a - (a * 2)
+    }
+    if (a < 0) {
+        return a + (a * -2);
+    }
+    else {
+        return a
+    }
+}
+*/
 function operate (a, b, c) {
     if (c == '+') {
           return  addUp(a, b);
@@ -170,6 +215,9 @@ function operate (a, b, c) {
     }
     if ( c == '÷') {
             return divide(a, b);
+    }
+    if (c == '%') {
+        return percentage(a, b); 
     }
 }
 
