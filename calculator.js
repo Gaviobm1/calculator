@@ -14,12 +14,12 @@ butoClear.textContent = 'C'
 numbers.appendChild(butoClear)
 
 const percent = document.createElement('button');
-percent.classList.add('oper', 'percent', 'buto', 'top');
+percent.classList.add('percent', 'oper', 'top');
 percent.textContent = ' % ';
 numbers.appendChild(percent);
 
 const negPosi = document.createElement('button');
-negPosi.classList.add('oper', 'negPosi', 'top');
+negPosi.classList.add('negPosi', 'top');
 negPosi.textContent = '- / +'
 numbers.appendChild(negPosi)
 
@@ -73,8 +73,8 @@ butoNum0.classList.add('numBut', 'num0', 'buto')
 butoNum0.textContent = '0';
 numbers.appendChild(butoNum0)
 
-const butoNumPoint = document.createElement('button')
-butoNumPoint.classList.add('numBut', 'numPoint', 'buto')
+let butoNumPoint = document.createElement('button')
+butoNumPoint.classList.add('numBut', 'numPoint')
 butoNumPoint.textContent = '.';
 numbers.appendChild(butoNumPoint)
 
@@ -115,57 +115,86 @@ container.appendChild(buttons);
 buttons.appendChild(numbers);
 buttons.appendChild(functions);
 
+
+
+let clickCounter = 0;
+let displayValue = [];
+let num1;
+let num2; 
+let operator;
+let str1 = ''
+let arr1;
+let buttonOpacity = document.querySelectorAll('.oper');
+
 const clear = document.querySelector('.butoClear').addEventListener('click', () => {
     screen.textContent = '';
     displayValue = [];
 })
 
-let displayValue = [];
 const className = document.querySelectorAll('.buto').forEach((button) => button.addEventListener('click', () => {
-   
+    if (clickCounter < 1) {
+        screen.textContent = '';
+    }
     screen.textContent += button.textContent;
-}
-)) 
-    
-    /*
-    if a button containing an operator is clicked, it doesn't appear on screen but pushes the current number to the displayValue array and also pushes itself to the array. upon the next click the old number is replaced with the new 
-    */
-    
+    clickCounter++;
+}))
+
 
 
 const screenContent = document.querySelectorAll('.oper').forEach((button) => button.addEventListener('click', () => {
-    button.style.opacity = '0.5'
+   if (displayValue.length >= 2) {
+        displayValue.push(screen.textContent);
+        str1=  displayValue.join('');
+        arr1= str1.split(' ');
+        num1 = arr1[0];
+        num2 = arr1[2];
+        operator = arr1 [1];
+        screen.textContent = operate(num1, num2, operator);
+        displayValue = [];
+        displayValue.push(screen.textContent);
+        displayValue.push(button.textContent);
+        clickCounter = 0; 
+    } else {
+    clickCounter = 0; 
     displayValue.push(screen.textContent);
     displayValue.push(button.textContent);
-    screen.textContent = '';
-
+    button.style.opacity = '0.5';
+    screen.textContent = displayValue[0];
+    if (displayValue[0] == displayValue[1]) {
+        displayValue.splice(0,1);
+    } }
+        
 }))
 
-let str1 = ''
-const getResult = document.querySelector('.equal').addEventListener('click', () => {
-   
-   displayValue.push(screen.textContent);
-   let arr1 = displayValue
-   num1 = displayValue[0];
-   
-   num2 = displayValue[2];
-  
-   operator = displayValue[1];
-   
-   screen.textContent = operate(num1, num2, operator);
-   
-   
+const onePoint = document.querySelector('.numPoint').addEventListener('click', () => {
+    if (screen.textContent.includes('.')) {
+        butoNumPoint = null;
+}
+    screen.textContent += butoNumPoint.textContent;
+    
+    
 })
 
+const getResult = document.querySelector('.equal').addEventListener('click', () => {
+   displayValue.push(screen.textContent)
+   str1=  displayValue.join('');
+   arr1= str1.split(' ');
+   num1 = arr1[0];
+   num2 = arr1[2];
+   operator = arr1 [1];
+   screen.textContent = operate(num1, num2, operator);
+   displayValue = [];
+   displayValue.push(screen.textContent);
+   
+})
 
 const negyPosy = document.querySelector('.negPosi').addEventListener('click', () => {
-     screen.textContent = screen.textContent.replace(/^/,'-')
+    if (!screen.textContent.includes('-')) {
+     screen.textContent = '-' + screen.textContent
+    } else if (screen.textContent.includes('-')) {
+        screen.textContent = (+screen.textContent) + (+screen.textContent * -2)
+    }
 })
-
-let num1;
-let num2; 
-let operator;
-   
 
 function addUp (a, b) {
     return +a + +b;
@@ -176,7 +205,7 @@ function subtract (a, b) {
 }
 
 function multiply (a, b) {
-    return (a*=b);
+    return a*=b;
 }
 
 function divide (a, b) {
@@ -190,7 +219,7 @@ function divide (a, b) {
 function percentage(a, b) {
     return (a/b*100).toFixed(2).replace(/[.,]00$/, "");
 }
-/*
+
 function negPos (a) {
     if (a > 0) {
      a - (a * 2)
@@ -202,7 +231,7 @@ function negPos (a) {
         return a
     }
 }
-*/
+
 function operate (a, b, c) {
     if (c == '+') {
           return  addUp(a, b);

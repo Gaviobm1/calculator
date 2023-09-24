@@ -125,6 +125,36 @@ body {
     
 }
 
+.percent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border-style: none;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: #702670;
+    color: beige;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.negPosi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border-style: none;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: #702670;
+    color: beige;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .top {
     background-color: #66023C
 }
