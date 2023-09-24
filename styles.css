@@ -15,21 +15,44 @@ body {
     justify-content: center;
     border-radius: 10%;
     padding: 20px;
-    background-color: #D896FF;
+    background-color: #9E4244;
     filter: brightness(150%)
 }
 
+.bigNum {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: x-large;
+    background-color: gray;
+    border-radius: 10%;
+    margin: 20px;
+}
 .screen {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 10px;
     font-size: x-large;
-    height: 50px;
-    background-color: #efbbff;
-    filter: brightness(200%);
+    height: 20px;
+    background-color: gray;
     border-radius: 10%;
-    margin: 20px;
+    width: 220px;
+}
+.tracking {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    padding-bottom: 0;
+    font-size: medium;
+    height: 30px;
+    background-color: gray;
+    border-radius: 10%;
+    width: 220px;;
+   
 }
 .numBut {
   display: flex;
@@ -140,7 +163,7 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.negPosi {
+.del {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,5 +192,9 @@ body {
     color: beige
 }
 
+.footer {
+    margin: 50px;
+    color: #FF1694
+}
 
 
