@@ -18,12 +18,12 @@ numbers.classList.add('nums')
 
 const butoClear = document.createElement('button')
 butoClear.classList.add('butoClear', 'top')
-butoClear.textContent = 'C'
+butoClear.textContent = 'AC'
 numbers.appendChild(butoClear)
 
 const del = document.createElement('button');
 del.classList.add('del', 'top');
-del.textContent = 'del'
+del.textContent = 'CE'
 numbers.appendChild(del)
 
 const percent = document.createElement('button');
